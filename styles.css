@@ -1,0 +1,63 @@
+/* ==========================================================================
+   Estilos Globales para el Visor Territorial - Registro Civil
+   ========================================================================== */
+
+/* 1. Maximizar el uso de la pantalla */
+html, body, .quarto-container, #quarto-content {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    max-width: 100% !important;
+    overflow-x: hidden;
+}
+
+/* 2. Ajustes para contenedores de mapas Leaflet */
+.leaflet-container {
+    height: calc(100vh - 120px) !important; /* Ajusta el alto dinámicamente restando la barra de navegación */
+    width: 100% !important;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+}
+
+/* 3. Personalización de la barra de navegación (Navbar) */
+.navbar {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* 4. Diseño de tarjetas (Cards) para indicadores o filtros */
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: 1rem;
+}
+
+.card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+/* 5. Ajustes de tipografía para Reportes Técnicos */
+h1, h2, h3 {
+    color: #2c3e50; /* Tono azul oscuro profesional */
+    font-weight: 600;
+}
+
+/* Ocultar elementos innecesarios en un entorno de mapa a pantalla completa */
+#quarto-margin-sidebar, .toc-actions {
+    display: none !important;
+}

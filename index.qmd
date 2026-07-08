@@ -1,0 +1,132 @@
+---
+title: "Visor Territorial de Infraestructura"
+format: 
+  dashboard:
+    theme: flatly
+    nav-buttons:
+      - icon: github
+        href: https://github.com/
+---
+
+```{r setup, include=FALSE}
+# Ya no llamamos a la librería shiny
+library(leaflet)
+library(readr)
+library(dplyr)
+
+# ==========================================
+# 1. CARGA Y PREPROCESAMIENTO DE DATOS BASE
+# ==========================================
+nombres_capas <- paste("Zonal", 1:9)
+colores_zonas <- c("red", "blue", "green", "purple", "orange", "darkred", "lightgreen", "darkblue", "cadetblue")
+
+lista_zonas <- lapply(1:9, function(i) {
+  archivo <- paste0("CZ", i, ".csv")
+  if (!file.exists(archivo)) return(NULL)
+  
+  df <- read_delim(archivo, delim = ";", locale = locale(encoding = "Latin1"), show_col_types = FALSE)
+  df <- df[,1:8]
+  colnames(df)[5] <- "Agencia"
+  names(df) <- toupper(names(df))
+  
+  df$LATITUD  <- as.numeric(df$LATITUD)
+  df$LONGITUD <- as.numeric(df$LONGITUD)
+  df$LONGITUD <- ifelse(df$LONGITUD > 0, df$LONGITUD * -1, df$LONGITUD)
+  
+  df <- df[!is.na(df$LATITUD) & !is.na(df$LONGITUD), ]
+  return(df)
+})
+
+lista_zonas <- lista_zonas[!sapply(lista_zonas, is.null)]
+names(lista_zonas) <- nombres_capas[1:length(lista_zonas)]
+
+set.seed(42) 
+estados_columnas <- c("No intervenido", "Visitado", "En Diseño", "Intervenido")
+colores_estados  <- c("black", "orange", "blue", "green")
+
+lista_estados <- lapply(lista_zonas, function(df) {
+  for(estado in estados_columnas) {
+    df[[estado]] <- sample(c(TRUE, FALSE), nrow(df), replace = TRUE)
+  }
+  return(df)
+})
+
+df_consolidado_estados <- bind_rows(lista_estados)
+```
+
+# Vista por Zonas
+
+```{r}
+#| padding: 0
+
+mapa <- leaflet() %>%
+  addTiles() %>% 
+  setView(lng = -78.5, lat = -1.2, zoom = 7)
+
+for (i in 1:length(lista_zonas)) {
+  capa_actual  <- nombres_capas[i]
+  datos_capa   <- lista_zonas[[capa_actual]]
+  color_actual <- colores_zonas[i]
+  
+  iconos <- awesomeIcons(
+    icon = 'ios-pin', iconColor = 'white', library = 'ion', markerColor = color_actual
+  )
+  
+  mapa <- mapa %>%
+    addAwesomeMarkers(
+      data = datos_capa, lng = ~LONGITUD, lat = ~LATITUD,
+      group = capa_actual, icon = iconos,
+      label = ~PROVINCIA,
+      popup = ~paste0("<strong>Agencia: </strong>", `AGENCIA`)
+    )
+}
+
+mapa %>%
+  addLayersControl(
+    overlayGroups = nombres_capas[1:length(lista_zonas)],
+    options = layersControlOptions(collapsed = FALSE)
+  ) %>%
+  addLegend(
+    position = "bottomright", colors = colores_zonas[1:length(lista_zonas)],
+    labels = nombres_capas[1:length(lista_zonas)], title = "Zonas", opacity = 0.8
+  )
+```
+
+# Vista por Intervención
+
+```{r}
+#| padding: 0
+
+mapa_int <- leaflet() %>%
+  addTiles() %>% 
+  setView(lng = -78.5, lat = -1.2, zoom = 7)
+
+for(e in 1:length(estados_columnas)) {
+  estado_actual <- estados_columnas[e]
+  color_estado  <- colores_estados[e]
+  
+  datos_filtrados <- df_consolidado_estados[df_consolidado_estados[[estado_actual]] == TRUE, ]
+  
+  iconos_estado <- awesomeIcons(
+    icon = 'ios-cog', iconColor = 'white', library = 'ion', markerColor = color_estado
+  )
+  
+  mapa_int <- mapa_int %>%
+    addAwesomeMarkers(
+      data = datos_filtrados, lng = ~LONGITUD, lat = ~LATITUD,
+      group = estado_actual, icon = iconos_estado,
+      label = ~paste("Provincia:", PROVINCIA, "-", estado_actual),
+      popup = ~paste0("<strong>Agencia: </strong>", `AGENCIA`, "<br><strong>Estado: </strong>", estado_actual)
+    )
+}
+
+mapa_int %>%
+  addLayersControl(
+    overlayGroups = estados_columnas,
+    options = layersControlOptions(collapsed = FALSE)
+  ) %>%
+  addLegend(
+    position = "bottomright", colors = colores_estados,
+    labels = estados_columnas, title = "Estados", opacity = 0.8
+  )
+```

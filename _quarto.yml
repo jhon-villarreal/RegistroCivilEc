@@ -1,0 +1,19 @@
+project:
+  type: website # Se mantiene website para que GitHub Pages lo lea como sitio
+  output-dir: docs
+
+website:
+  title: "Control Territorial de Infraestructura"
+  navbar:
+    search: false
+
+format:
+  dashboard:
+    theme: cosmo
+    orientation: rows # Organiza los elementos por filas
+    vertical-layout: fill # Ajusta los mapas automáticamente al alto de la pantalla
+    nav-buttons:
+      - icon: github
+        href: https://github.com/tu_usuario # Tu enlace de control de versiones
+
+editor: visual
