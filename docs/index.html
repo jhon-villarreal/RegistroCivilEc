@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Visor Territorial de Infraestructura – Control Territorial de Infraestructura</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-6b423f165eeea3787de40cb4f8e821c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-6b423f165eeea3787de40cb4f8e821c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6b423f165eeea3787de40cb4f8e821c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-dashboard/quarto-dashboard.js"></script>
+<script src="site_libs/quarto-dashboard/stickythead.js"></script>
+
+
+
+<script src="site_libs/quarto-dashboard/web-components.js" type="module"></script>
+<script src="site_libs/quarto-dashboard/components.js"></script>
+
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
+
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+
+<link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+
+<script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
+
+<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+
+<script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
+
+<script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+
+<link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+
+<script src="site_libs/leaflet-binding-2.2.3/leaflet.js"></script>
+
+<link href="site_libs/leaflet-awesomemarkers-2.0.3/leaflet.awesome-markers.css" rel="stylesheet">
+
+<script src="site_libs/leaflet-awesomemarkers-2.0.3/leaflet.awesome-markers.min.js"></script>
+
+<link href="site_libs/ionicons-2.0.1/ionicons.min.css" rel="stylesheet">
+
+
+
+</head>
+
+<body class="quarto-dashboard nav-fixed dashboard-fill fullcontent quarto-light">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Control Territorial de Infraestructura</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+</div>
+      <div class="quarto-dashboard-links"><a class="quarto-dashboard-link" href="https://github.com/tu_usuario"><i class="bi bi-github"></i></a><a class="quarto-dashboard-link" href="https://github.com/"><i class="bi bi-github"></i></a></div></div> <!-- /container-fluid -->
+    </nav>
+<header id="quarto-dashboard-header">
+<nav class="navbar navbar-expand-md slim" data-bs-theme="dark">
+  <div class="navbar-container container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-controls="dashboard-collapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>    
+
+
+    <div class="navbar-brand-container">
+
+
+      <div class="navbar-title">
+        <div class="navbar-title-text"><a href="#">Visor Territorial de Infraestructura</a></div>
+        
+        
+      </div>
+    </div>
+<div id="dashboard-collapse" class="navbar-collapse collapse"><ul class="navbar-nav navbar-nav-scroll me-auto" role="tablist"><li class="nav-item" role="presentation"><a id="tab-vista-por-zonas" class="nav-link active" data-bs-toggle="tab" role="tab" data-bs-target="#vista-por-zonas" data-scrolling="false" href="#vista-por-zonas" aria-controls="vista-por-zonas" aria-selected="true"><span class="nav-link-text">Vista por Zonas</span></a></li><li class="nav-item" role="presentation"><a id="tab-vista-por-intervención" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#vista-por-intervención" data-scrolling="false" href="#vista-por-intervención" aria-controls="vista-por-intervención" aria-selected="false"><span class="nav-link-text">Vista por Intervención</span></a></li></ul></div></div>
+</nav>
+</header></header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-layout-custom page-navbar quarto-dashboard-content bslib-gap-spacing html-fill-container bslib-page-fill quarto-dashboard-pages">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+<!-- main -->
+
+<div class="bslib-grid-item html-fill-item tab-content bslib-grid" data-layout="fill" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div id="vista-por-zonas" class="dashboard-page tab-pane show active html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-vista-por-zonas">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container" style="padding: 0;">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="leaflet html-widget html-fill-item html-fill-container" id="htmlwidget-404d7ef339f4df1beafe" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-404d7ef339f4df1beafe">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addAwesomeMarkers","args":[[0.81154,0.83081,0.60055,0.62155,0.550809,0.328694,0.6104000000000001,0.8698900000000001,1.283333,1.088378,1.07527,0.91425,0.96349,0.968516,0.3475,0.3,0.317,0.2338,0.233322,0.353384,0.391075],[-77.71261,-77.71005,-77.83419000000001,-77.93873000000001,-78.041253,-79.46091699999999,-80.01860000000001,-79.84059999999999,-78.835667,-78.988253,-79.41274,-79.69194400000001,-79.65219,-79.653972,-78.1215,-78.266667,-78.217,-78.26260000000001,-78.25944,-78.126193,-77.939387],{"icon":"ios-pin","markerColor":"red","iconColor":"white","spin":false,"squareMarker":false,"iconRotate":0,"font":"monospace","prefix":"ion"},null,"Zonal 1",{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["<strong>Agencia: <\/strong>TULCÁN","<strong>Agencia: <\/strong>ARCES HOSPITAL LUIS G DAVILA","<strong>Agencia: <\/strong>SAN GABRIEL","<strong>Agencia: <\/strong>EL ANGEL","<strong>Agencia: <\/strong>MIRA","<strong>Agencia: <\/strong>QUININDE","<strong>Agencia: <\/strong>MUISNE","<strong>Agencia: <\/strong>ATACAMES","<strong>Agencia: <\/strong>SAN LORENZO","<strong>Agencia: <\/strong>ELOY ALFARO","<strong>Agencia: <\/strong>RIOVERDE","<strong>Agencia: <\/strong>ARCES HOSPITAL DELFINA TORRES CONCHA ","<strong>Agencia: <\/strong>PREFECTURA - ESMERALDAS","<strong>Agencia: <\/strong>EDIFICIO SENEGAL","<strong>Agencia: <\/strong>IBARRA","<strong>Agencia: <\/strong>COTACACHI","<strong>Agencia: <\/strong>AGENCIA","<strong>Agencia: <\/strong>OTAVALO","<strong>Agencia: <\/strong>ARCES HOSPITAL SAN LUIS DE OTAVALO","<strong>Agencia: <\/strong>ARCES HOSPITAL SAN VICENTE DE PAUL","<strong>Agencia: <\/strong>PIMAMPIRO "],null,null,null,["CARCHI","CARCHI","CARCHI","CARCHI","CARCHI","ESMERALDAS","ESMERALDAS","ESMERALDAS","ESMERALDAS","ESMERALDAS","ESMERALDAS","ESMERALDAS","ESMERALDAS","ESMERALDAS","IMBABURA","IMBABURA","IMBABURA","IMBABURA","IMBABURA","IMBABURA","IMBABURA"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addAwesomeMarkers","args":[[-1.006998,-0.340438,-0.455702,-0.291644,-0.691615,-0.921013,-1.480853,-1.233186,-1.265683,0.07838299999999999,-0.187994,0.078122,0.048043,-0.126607,0.116827],[-77.813085,-77.814734,-76.993172,-76.854078,-77.309354,-75.399106,-78.006381,-77.68215600000001,-77.888977,-76.892731,-76.637781,-77.21047799999999,-77.328526,-76.344024,-75.86480400000001],{"icon":"ios-pin","markerColor":"blue","iconColor":"white","spin":false,"squareMarker":false,"iconRotate":0,"font":"monospace","prefix":"ion"},null,"Zonal 2",{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["<strong>Agencia: <\/strong>TENA","<strong>Agencia: <\/strong>EL CHACO","<strong>Agencia: <\/strong>ORELLANA (COCA)","<strong>Agencia: <\/strong>JOYA DE LOS SACHAS","<strong>Agencia: <\/strong>LORETO","<strong>Agencia: <\/strong>AGUARICO","<strong>Agencia: <\/strong>PUYO","<strong>Agencia: <\/strong>ARAJUNO","<strong>Agencia: <\/strong>SANTA CLARA","<strong>Agencia: <\/strong>LAGO AGRIO","<strong>Agencia: <\/strong>SHUSHUFINDI","<strong>Agencia: <\/strong>CASCALES","<strong>Agencia: <\/strong>GONZALO PIZARRO","<strong>Agencia: <\/strong>CUYABENO","<strong>Agencia: <\/strong>PUTUMAYO"],null,null,null,["NAPO","NAPO","ORELLANA","ORELLANA","ORELLANA","ORELLANA","PASTAZA","PASTAZA","PASTAZA","SUCUMBIOS","SUCUMBIOS","SUCUMBIOS","SUCUMBIOS","SUCUMBIOS","SUCUMBIOS"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addAwesomeMarkers","args":[[-1.630298,-1.9414189,-1.685461,-1.4299261,-1.5930496,-1.9546901,-1.7088971,-1.2910467,-2.2018411,-2.289176,-1.7037811,-2.2048919,-1.9347172,-1.6070238,-1.6819748,-1.9982086,-1.564785,-1.6688293,-0.9368378000000001,-0.946947,-0.9530168999999999,-1.137447,-0.9564856,-1.0459122,-0.8386039,-0.7081441000000001,-0.9576692999999999,-1.2663853,-1.3979978,-1.2316292,-1.2277475,-1.3183452,-1.3302603,-1.1779727,-1.3770706,-1.3490161],[-79.2548735,-79.0693011,-79.024568,-79.2847749,-79.00436379999999,-79.2366079,-79.0448344,-78.9623919,-78.8501004,-78.920224,-78.7773234,-79.13739769999999,-78.7163311,-78.6461039,-78.6623501,-78.96793700000001,-78.531139,-78.65604620000001,-78.61957289999999,-79.2428556,-78.60598880000001,-79.080654,-78.69307809999999,-78.59748949999999,-78.6685499,-78.8923259,-78.8980396,-78.672186,-78.4256908,-78.6276055,-78.5891194,-78.5081576,-78.5472781,-78.54582120000001,-78.6084951,-78.672186],{"icon":"ios-pin","markerColor":"green","iconColor":"white","spin":false,"squareMarker":false,"iconRotate":0,"font":"monospace","prefix":"ion"},null,"Zonal 3",{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["<strong>Agencia: <\/strong>CALUMA","<strong>Agencia: <\/strong>CHILLANES","<strong>Agencia: <\/strong>CHIMBO","<strong>Agencia: <\/strong>ECHEANDÃA","<strong>Agencia: <\/strong>GUARANDA","<strong>Agencia: <\/strong>SAN JOSÃ DEL TAMBO","<strong>Agencia: <\/strong>SAN MIGUEL","<strong>Agencia: <\/strong>SIMIATUG","<strong>Agencia: <\/strong>ALAUSÃ","<strong>Agencia: <\/strong>CHUNCHI","<strong>Agencia: <\/strong>COLTA","<strong>Agencia: <\/strong>CUMANDÃ","<strong>Agencia: <\/strong>GUAMOTE","<strong>Agencia: <\/strong>GUANO","<strong>Agencia: <\/strong>HOSPITAL GENERAL DOCENTE","<strong>Agencia: <\/strong>PALLATANGA","<strong>Agencia: <\/strong>PENIPE","<strong>Agencia: <\/strong>RIOBAMBA","<strong>Agencia: <\/strong>HOSPITAL GENERAL DE LATACUNGA","<strong>Agencia: <\/strong>LA MANÃ","<strong>Agencia: <\/strong>LATACUNGA","<strong>Agencia: <\/strong>PANGUA","<strong>Agencia: <\/strong>PUJILÃ","<strong>Agencia: <\/strong>SALCEDO","<strong>Agencia: <\/strong>SAQUISILÃ","<strong>Agencia: <\/strong>SIGCHOS","<strong>Agencia: <\/strong>ZUMBAHUA","<strong>Agencia: <\/strong>AMBATO","<strong>Agencia: <\/strong>BAÃOS DE AGUA SANTA","<strong>Agencia: <\/strong>HOSPITAL REGIONAL DOCENTE","<strong>Agencia: <\/strong>IZAMBA","<strong>Agencia: <\/strong>PATATE","<strong>Agencia: <\/strong>PELILEO","<strong>Agencia: <\/strong>PILLARO","<strong>Agencia: <\/strong>QUERO","<strong>Agencia: <\/strong>TISALEO"],null,null,null,["BOLÃVAR","BOLÃVAR","BOLÃVAR","BOLÃVAR","BOLÃVAR","BOLÃVAR","BOLÃVAR","BOLÃVAR","CHIMBORAZO","CHIMBORAZO","CHIMBORAZO","CHIMBORAZO","CHIMBORAZO","CHIMBORAZO","CHIMBORAZO","CHIMBORAZO","CHIMBORAZO","CHIMBORAZO","COTOPAXI","COTOPAXI","COTOPAXI","COTOPAXI","COTOPAXI","COTOPAXI","COTOPAXI","COTOPAXI","COTOPAXI","TUNGURAHUA","TUNGURAHUA","TUNGURAHUA","TUNGURAHUA","TUNGURAHUA","TUNGURAHUA","TUNGURAHUA","TUNGURAHUA","TUNGURAHUA"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addAwesomeMarkers","args":[[-0.244868886,0.017359,-1.393913874,-0.60285034,-0.252113423,-0.7050477939999999,-1.552237112,-1.353289643,-0.200616472,-0.845067569,-1.048766732,-1.559601112,-1.05001328,-1.206679,-0.982054623,-0.926018395,-0.92523567,-1.024919057,-0.406377755,0.07597709800000001],[-79.17156847,-79.399353,-80.21124677,-80.42558751,-79.4867883,-80.10351626000001,-80.42558862999999,-80.58604912,-80.26319237,-80.15911761,-79.82302851,-80.81066203,-80.66057194,-80.37368600000001,-80.72128323,-80.20647397,-80.45004766,-80.47748704999999,-79.90629644000001,-80.04020993],{"icon":"ios-pin","markerColor":"purple","iconColor":"white","spin":false,"squareMarker":false,"iconRotate":0,"font":"monospace","prefix":"ion"},null,"Zonal 4",{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["<strong>Agencia: <\/strong>SANTO DOMINGO","<strong>Agencia: <\/strong>La Concordia ","<strong>Agencia: <\/strong>OLMEDO","<strong>Agencia: <\/strong>BAHIA DE CARAQUEZ","<strong>Agencia: <\/strong>EL CARMEN","<strong>Agencia: <\/strong>CHONE","<strong>Agencia: <\/strong>PAJAN","<strong>Agencia: <\/strong>JIPIJAPA","<strong>Agencia: <\/strong>JAMA","<strong>Agencia: <\/strong>BOLIVAR","<strong>Agencia: <\/strong>PICHINCHA","<strong>Agencia: <\/strong>PUERTO LOPEZ","<strong>Agencia: <\/strong>MONTECRISTI","<strong>Agencia: <\/strong>SANTA ANA ","<strong>Agencia: <\/strong>MANTA","<strong>Agencia: <\/strong>JUNIN","<strong>Agencia: <\/strong>ROCAFUERTE ","<strong>Agencia: <\/strong>PORTOVIEJO","<strong>Agencia: <\/strong>FLAVIO ALFARO ","<strong>Agencia: <\/strong>PEDERNALES"],null,null,null,["SANTO DOMINGO","SANTO DOMINGO","MANABI","MANABI","MANABI","MANABI","MANABI","MANABI","MANABI","MANABI","MANABI","MANABI","MANABI","MANABI","MANABI","MANABI","MANABI","MANABI","MANABI","MANABI"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addAwesomeMarkers","args":[[-1.80368,-1.552043,-1.029888889,-1.44297,-1.571694444,-0.950565335,-1.18385,-1.43865,-1.788892,-1.784261,-1.03743,-1.024983,-1.55641,-1.799927274,-0.897,-1.2064,-1.8508183,-2.229196,-2.2255499,-2.0217741,-2.231244871,-2.402320083,-2.139928255,-2.125808198,-0.74236,-0.953995,-0.901888],[-79.5280834,-79.53473700000001,-79.45511111,-79.46274,-79.47127777999999,-79.3652,-79.50552999999999,-79.75843999999999,-79.287741,-79.679118,-79.47217000000001,-79.46657999999999,-79.7533,-79.53816591,-79.48926,-79.3133,-80.7460409,-80.92468,-80.85910579999999,-80.6695551,-80.85291675000001,-80.68074498,-79.596817,-79.58810085,-90.32281,-90.96476,-89.607901],{"icon":"ios-pin","markerColor":"orange","iconColor":"white","spin":false,"squareMarker":false,"iconRotate":0,"font":"monospace","prefix":"ion"},null,"Zonal 5",{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["<strong>Agencia: <\/strong>BABAHOYO","<strong>Agencia: <\/strong>PUEBLOVIEJO","<strong>Agencia: <\/strong>SAN CAMILO","<strong>Agencia: <\/strong>VENTANAS","<strong>Agencia: <\/strong>URDANETA","<strong>Agencia: <\/strong>VALENCIA","<strong>Agencia: <\/strong>MOCACHE","<strong>Agencia: <\/strong>PALENQUE ","<strong>Agencia: <\/strong>MONTALVO","<strong>Agencia: <\/strong>BABA","<strong>Agencia: <\/strong>ARCES HOSP. SAGRADO CORAZÃN DE JESUS","<strong>Agencia: <\/strong>CENTRO QUEVEDO","<strong>Agencia: <\/strong>AGENCIA VINCES ","<strong>Agencia: <\/strong>ARCES BABAHOYO ","<strong>Agencia: <\/strong>BUENA FE ","<strong>Agencia: <\/strong>QUINSALOMA ","<strong>Agencia: <\/strong>MANGLARALTO","<strong>Agencia: <\/strong>SALINAS/CAC","<strong>Agencia: <\/strong>SANTA ELENA","<strong>Agencia: <\/strong>COLONCHE","<strong>Agencia: <\/strong>ARCES SANTA ELENA","<strong>Agencia: <\/strong>CHANDUY ","<strong>Agencia: <\/strong>MILAGRO","<strong>Agencia: <\/strong>ARCE-MILAGRO","<strong>Agencia: <\/strong>SANTA CRUZ","<strong>Agencia: <\/strong>ISABELA","<strong>Agencia: <\/strong>SAN CRISTOBAL"],null,null,null,["LOS RIOS","LOS RIOS ","LOS RIOS ","LOS RIOS","URDANETA","LOS RIOS","LOS RIOS","LOS RIOS","LOS RIOS","LOS RIOS","LOS RIOS","LOS RIOS","LOS RIOS ","BABAHOYO","LOS RIOS","LOS RIOS","SANTA ELENA","SANTA ELENA","SANTA ELENA","SANTA ELENA ","SANTA ELENA ","SANTA ELENA ","GUAYAS","GUAYAS","GALAPAGOS","GALAPAGOS","GALAPAGOS"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addAwesomeMarkers","args":[[-3.062573,-2.889357082,-2.904732265,-2.903266963,-3.036883716,-2.894414269,-3.337076,-3.47002,-2.9034092,-3.218511344,-3.273701906,-3.0507274,-2.738508996,-2.714722,-2.557304305,-2.445612703,-2.438579297,-3.404470218,-1.941871,-2.96899,-2.717703581,-2.450065613,-2.384105963,-1.699329492,-2.291536553,-3.04889,-3.116255],[-79.74272999999999,-79.00231665,-79.02694612000001,-78.99968032,-79.14783113,-78.77212797999999,-79.06695499999999,-79.15461999999999,-78.9996276,-79.4675738,-79.31440735,-78.7954175,-78.84721999999999,-78.887946,-78.94145874,-79.32012965,-79.05245893999999,-78.5770428,-77.990498,-78.43532999999999,-78.31968689,-78.17086184,-77.50677940999999,-77.96953632,-78.12098211999999,-78.00714000000001,-78.529078],{"icon":"ios-pin","markerColor":"darkred","iconColor":"white","spin":false,"squareMarker":false,"iconRotate":0,"font":"monospace","prefix":"ion"},null,"Zonal 6",{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["<strong>Agencia: <\/strong>CAMILO PONCE ENRÃQUEZ","<strong>Agencia: <\/strong>BELLAVISTA","<strong>Agencia: <\/strong>EL BATÃN","<strong>Agencia: <\/strong>SAN BLÃS (CUENCA)","<strong>Agencia: <\/strong>GIRÃN","<strong>Agencia: <\/strong>GUALACEO","<strong>Agencia: <\/strong>NABÃN","<strong>Agencia: <\/strong>OÃA","<strong>Agencia: <\/strong>PAUTE","<strong>Agencia: <\/strong>PUCARÃ","<strong>Agencia: <\/strong>SANTA ISABEL","<strong>Agencia: <\/strong>SIGSIG","<strong>Agencia: <\/strong>AZOGUES","<strong>Agencia: <\/strong>BIBLIÃN","<strong>Agencia: <\/strong>CAÃAR","<strong>Agencia: <\/strong>LA TRONCAL","<strong>Agencia: <\/strong>SUSCAL","<strong>Agencia: <\/strong>GUALAQUIZA","<strong>Agencia: <\/strong>HUAMBOYA","<strong>Agencia: <\/strong>GENERAL LEONIDAS PLAZA GUTIÃRREZ","<strong>Agencia: <\/strong>SANTIAGO DE MÃNDEZ","<strong>Agencia: <\/strong>SUCÃA","<strong>Agencia: <\/strong>TAISHA","<strong>Agencia: <\/strong>PALORA","<strong>Agencia: <\/strong>MACAS","<strong>Agencia: <\/strong>TIWINTZA","<strong>Agencia: <\/strong>SAN JUAN BOSCO"],null,null,null,["AZUAY","AZUAY","AZUAY","AZUAY","AZUAY","AZUAY","AZUAY","AZUAY","AZUAY","AZUAY","AZUAY","AZUAY","CAÃAR","CAÃAR","CAÃAR","CAÃAR","CAÃAR","MORONA SANTIAGO","MORONA SANTIAGO","MORONA SANTIAGO","MORONA SANTIAGO","MORONA SANTIAGO","MORONA SANTIAGO","MORONA SANTIAGO","MORONA SANTIAGO","MORONA SANTIAGO","MORONA SANTIAGO"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addAwesomeMarkers","args":[[-4.07,-3.64,-3.63,-4.86,-4.05,-3.82,-4.32,-4.58,-3.62,-4.05,-4,-4.37,-4.02,-4,-4.39,-4.1,-3.55,-3.24,-3.47,-3.49,-3.26,-3.79,-3.33,-3.69,-3.71,-3.44,-3.69],[-78.95,-78.93000000000001,-78.59,-79.13,-78.68000000000001,-78.76000000000001,-79.56,-79.43000000000001,-79.23999999999999,-79.65000000000001,-79.2,-79.94,-80.02,-79.34999999999999,-80.23999999999999,-79.95999999999999,-80.06,-79.84,-79.95999999999999,-80.22,-79.95999999999999,-79.91,-79.81999999999999,-79.68000000000001,-79.62,-79.97,-79.61],{"icon":"ios-pin","markerColor":"lightgreen","iconColor":"white","spin":false,"squareMarker":false,"iconRotate":0,"font":"monospace","prefix":"ion"},null,"Zonal 7",{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["<strong>Agencia: <\/strong>ZAMORA","<strong>Agencia: <\/strong>YACUAMBI","<strong>Agencia: <\/strong>AGENCIA EL PANGUI ","<strong>Agencia: <\/strong>ZUMBA/ZUMBA","<strong>Agencia: <\/strong>NANGARITZA","<strong>Agencia: <\/strong>YANTZAZA","<strong>Agencia: <\/strong>AGENCIA CALVAS","<strong>Agencia: <\/strong>AGENCIA ESPINDOLA/PARROQUIA AMALUZA","<strong>Agencia: <\/strong>AGENCIA SARAGURO","<strong>Agencia: <\/strong>Paltas","<strong>Agencia: <\/strong>Loja","<strong>Agencia: <\/strong>MACARÃ/MACARÃ","<strong>Agencia: <\/strong>Agencia del Registro Civil Puyango","<strong>Agencia: <\/strong>CATAMAYO","<strong>Agencia: <\/strong>ZAPOTILLO","<strong>Agencia: <\/strong>CELICA","<strong>Agencia: <\/strong>ARENILLAS","<strong>Agencia: <\/strong>EL GUABO","<strong>Agencia: <\/strong>HOSPITAL ÃNGELA LOAYZA DE OLLAGUE","<strong>Agencia: <\/strong>HUAQUILLAS","<strong>Agencia: <\/strong>MACHALA","<strong>Agencia: <\/strong>MARCABELÃ","<strong>Agencia: <\/strong>PASAJE","<strong>Agencia: <\/strong>PIÃAS","<strong>Agencia: <\/strong>PORTOVELO","<strong>Agencia: <\/strong>SANTA ROSA","<strong>Agencia: <\/strong>ZARUMA"],null,null,null,["ZAMORA CHINCHIPE","ZAMORA CHINCHIPE","ZAMORA CHINCHIPE ","ZAMORA CHINCHIPE","ZAMORA CHINCHIPE","ZAMORA CHINCHIPE","LOJA","LOJA","LOJA","Loja","Loja","LOJA","LOJA","LOJA","LOJA","LOJA","EL ORO","EL ORO","EL ORO","EL ORO","EL ORO","EL ORO","EL ORO","EL ORO","EL ORO","EL ORO","EL ORO"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addAwesomeMarkers","args":[[-1.891817168,-1.364137857,-2.191008044,-1.547325175,-1.8544773,-2.167448032,-2.161583551,-2.331121899,-1.051262993,-2.634149282,-2.139556035,-2.6596441,-2.168695754,-2.100334017,-1.823924366,-1.834639255,-1.955327176,-2.243149565,-2.096022021,-2.183218271,-2.276548929,-2.127079483,-2.175637618,-2.275845429,-2.232088901,-2.096837608],[-79.55517164,-79.90192792000001,-79.88070629000001,-80.01023535,-79.97274399,-79.83766796,-79.89794254,-79.40484625000001,-79.63162469,-80.38981721,-79.86340405999999,-79.61597266,-79.46336135999999,-79.94035526,-80.22706829000001,-79.83178046,-79.72329242000001,-79.89640759,-79.69313509,-79.82935103,-79.89527845000001,-80.00192459,-79.94128372,-79.87734488,-79.89851046,-79.94631149],{"icon":"ios-pin","markerColor":"darkblue","iconColor":"white","spin":false,"squareMarker":false,"iconRotate":0,"font":"monospace","prefix":"ion"},null,"Zonal 8",{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["<strong>Agencia: <\/strong>ALFREDO BAQUERIZO MORENO (JUJAN)","<strong>Agencia: <\/strong>BALZAR","<strong>Agencia: <\/strong>CENTRO GYE/ROCAFUERTE","<strong>Agencia: <\/strong>COLIMES","<strong>Agencia: <\/strong>DAULE","<strong>Agencia: <\/strong>DURÃN","<strong>Agencia: <\/strong>EDIFICIO DEL GOBIERNO ZONAL GUAYAQUIL","<strong>Agencia: <\/strong>EL TRIUNFO","<strong>Agencia: <\/strong>EMPALME","<strong>Agencia: <\/strong>GENERAL VILLAMIL PLAYAS","<strong>Agencia: <\/strong>LA PUNTILLA","<strong>Agencia: <\/strong>NARANJAL","<strong>Agencia: <\/strong>NARANJITO","<strong>Agencia: <\/strong>NORTE GYE/TARQUI","<strong>Agencia: <\/strong>PEDRO CARBO","<strong>Agencia: <\/strong>SALITRE","<strong>Agencia: <\/strong>SAMBORONDÃN","<strong>Agencia: <\/strong>SUR GYE/XIMENA","<strong>Agencia: <\/strong>YAGUACHI","<strong>Agencia: <\/strong>ARCES HOSPITAL DR. ENRIQUE ORTEGA MOREIRA","<strong>Agencia: <\/strong>HOSPITAL DEL GUASMO SUR","<strong>Agencia: <\/strong>HOSPITAL GENERAL MONTE SINAÃ","<strong>Agencia: <\/strong>HOSPITAL IESS CEIBOS","<strong>Agencia: <\/strong>HOSPITAL MATILDE HIDALGO DE PROCEL","<strong>Agencia: <\/strong>HOSPITAL TEODORO MALDONADO CARBO IESS","<strong>Agencia: <\/strong>HOSPITAL UNIVERSITARIO"],null,null,null,["GUAYAS","GUAYAS","GUAYAS","GUAYAS","GUAYAS","GUAYAS","GUAYAS","GUAYAS","GUAYAS","GUAYAS","GUAYAS","GUAYAS","GUAYAS","GUAYAS","GUAYAS","GUAYAS","GUAYAS","GUAYAS","GUAYAS","GUAYAS","GUAYAS","GUAYAS","GUAYAS","GUAYAS","GUAYAS","GUAYAS"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addAwesomeMarkers","args":[[-0.2706466,-0.095246688,0.051158792,-0.112167087,-0.205010049,-0.257588368,-0.21458121,-0.312602299,-0.1272514,-0.08938141500000001,-0.084670128,-0.174828197,-0.514458564,-0.212833966,-0.05525626,0.065852166,0.119529525,-0.293126328,-0.324278457,-0.216527906,0.171208486,0.025375447,-0.2107169],[-78.5572578,-78.43798476000001,-78.14387037,-78.29598202,-78.5046663,-78.52528748,-78.49974249,-78.55422185,-78.500225,-78.47657633999999,-78.50991526,-78.485839,-78.56720167,-78.4099289,-78.45426045000001,-78.40330894,-79.26100919,-78.54606385,-78.44891574,-78.50416611,-78.41053641000001,-78.89476044,-78.4180705],{"icon":"ios-pin","markerColor":"cadetblue","iconColor":"white","spin":false,"squareMarker":false,"iconRotate":0,"font":"monospace","prefix":"ion"},null,"Zonal 9",{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["<strong>Agencia: <\/strong>ARCHIVO LOCAL","<strong>Agencia: <\/strong>CALDERÃN","<strong>Agencia: <\/strong>CAYAMBE","<strong>Agencia: <\/strong>EL QUINCHE","<strong>Agencia: <\/strong>HOSPITAL CARLOS ANDRADE MARÃN (QUITO)","<strong>Agencia: <\/strong>HOSPITAL GENERAL DEL SUR DE QUITO - IESS","<strong>Agencia: <\/strong>HOSPITAL GINECO OBSTÃTRICO ISIDRO AYORA (QUITO)","<strong>Agencia: <\/strong>HOSPITAL GINECO OBSTÃTRICO NUEVA AURORA","<strong>Agencia: <\/strong>HOSPITAL PABLO ARTURO SUAREZ","<strong>Agencia: <\/strong>HOSPITAL SAN FRANCISCO DE QUITO (QUITO)","<strong>Agencia: <\/strong>LA ROLDOS","<strong>Agencia: <\/strong>MATRIZ - IÃAQUITO","<strong>Agencia: <\/strong>MEJÃA","<strong>Agencia: <\/strong>PEDRO MONCAYO","<strong>Agencia: <\/strong>POMASQUI","<strong>Agencia: <\/strong>PUELLARO","<strong>Agencia: <\/strong>PUERTO QUITO","<strong>Agencia: <\/strong>QUITUMBE","<strong>Agencia: <\/strong>RUMIÃAHUI","<strong>Agencia: <\/strong>SAN BLAS (QUITO)","<strong>Agencia: <\/strong>SAN JOSÃ DE MINAS ","<strong>Agencia: <\/strong>SAN MIGUEL DE LOS BANCOS","<strong>Agencia: <\/strong>TUMBACO"],null,null,null,["QUITO","QUITO","CAYAMBE","QUITO","QUITO","QUITO","QUITO","QUITO","QUITO","QUITO","QUITO","QUITO","MEJÃA","PEDRO MONCAYO","QUITO","QUITO","PUERTO QUITO","QUITO","RUMIÃAHUI","QUITO","QUITO","SAN MIGUEL DE  LOS BANCOS","QUITO"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addLayersControl","args":[[],["Zonal 1","Zonal 2","Zonal 3","Zonal 4","Zonal 5","Zonal 6","Zonal 7","Zonal 8","Zonal 9"],{"collapsed":false,"autoZIndex":true,"position":"topright"}]},{"method":"addLegend","args":[{"colors":["red","blue","green","purple","orange","darkred","lightgreen","darkblue","cadetblue"],"labels":["Zonal 1","Zonal 2","Zonal 3","Zonal 4","Zonal 5","Zonal 6","Zonal 7","Zonal 8","Zonal 9"],"na_color":null,"na_label":"NA","opacity":0.8,"position":"bottomright","type":"unknown","title":"Zonas","extra":null,"layerId":null,"className":"info legend","group":null}]}],"setView":[[-1.2,-78.5],7,[]],"limits":{"lat":[-4.86,1.283333],"lng":[-90.96476,-75.399106]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div>
+<div id="vista-por-intervención" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-vista-por-intervención">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container" style="padding: 0;">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="leaflet html-widget html-fill-item html-fill-container" id="htmlwidget-1f689d72a4f461e8e297" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-1f689d72a4f461e8e297">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addAwesomeMarkers","args":[[0.81154,0.83081,0.60055,0.62155,1.283333,1.07527,0.96349,0.3475,0.3,0.391075,-1.006998,-0.291644,-0.691615,-0.921013,-1.480853,-1.265683,0.048043,-1.630298,-1.9414189,-1.5930496,-2.2018411,-2.289176,-1.7037811,-2.2048919,-1.9347172,-1.6070238,-1.6819748,-1.564785,-0.946947,-0.9564856,-1.0459122,-0.7081441000000001,-1.2663853,-1.2277475,-1.3302603,-0.244868886,0.017359,-1.393913874,-0.252113423,-0.7050477939999999,-0.200616472,-0.845067569,-1.048766732,-1.05001328,-0.92523567,-1.024919057,0.07597709800000001,-1.80368,-1.029888889,-1.44297,-0.950565335,-1.18385,-1.788892,-1.03743,-1.024983,-1.2064,-1.8508183,-2.0217741,-2.231244871,-2.139928255,-2.125808198,-0.74236,-0.901888,-3.062573,-2.889357082,-3.47002,-3.218511344,-3.273701906,-3.0507274,-2.445612703,-3.404470218,-2.717703581,-1.699329492,-2.291536553,-3.04889,-4.07,-3.63,-3.82,-4.32,-4.58,-4.37,-4.02,-4,-4.39,-4.1,-3.79,-3.71,-3.44,-1.891817168,-1.364137857,-2.191008044,-1.8544773,-2.161583551,-2.634149282,-2.139556035,-2.6596441,-2.168695754,-1.823924366,-2.243149565,-2.096022021,-2.127079483,-2.275845429,-2.232088901,-0.095246688,-0.312602299,-0.084670128,0.065852166,0.119529525,-0.324278457,-0.2107169],[-77.71261,-77.71005,-77.83419000000001,-77.93873000000001,-78.835667,-79.41274,-79.65219,-78.1215,-78.266667,-77.939387,-77.813085,-76.854078,-77.309354,-75.399106,-78.006381,-77.888977,-77.328526,-79.2548735,-79.0693011,-79.00436379999999,-78.8501004,-78.920224,-78.7773234,-79.13739769999999,-78.7163311,-78.6461039,-78.6623501,-78.531139,-79.2428556,-78.69307809999999,-78.59748949999999,-78.8923259,-78.672186,-78.5891194,-78.5472781,-79.17156847,-79.399353,-80.21124677,-79.4867883,-80.10351626000001,-80.26319237,-80.15911761,-79.82302851,-80.66057194,-80.45004766,-80.47748704999999,-80.04020993,-79.5280834,-79.45511111,-79.46274,-79.3652,-79.50552999999999,-79.287741,-79.47217000000001,-79.46657999999999,-79.3133,-80.7460409,-80.6695551,-80.85291675000001,-79.596817,-79.58810085,-90.32281,-89.607901,-79.74272999999999,-79.00231665,-79.15461999999999,-79.4675738,-79.31440735,-78.7954175,-79.32012965,-78.5770428,-78.31968689,-77.96953632,-78.12098211999999,-78.00714000000001,-78.95,-78.59,-78.76000000000001,-79.56,-79.43000000000001,-79.94,-80.02,-79.34999999999999,-80.23999999999999,-79.95999999999999,-79.91,-79.62,-79.97,-79.55517164,-79.90192792000001,-79.88070629000001,-79.97274399,-79.89794254,-80.38981721,-79.86340405999999,-79.61597266,-79.46336135999999,-80.22706829000001,-79.89640759,-79.69313509,-80.00192459,-79.87734488,-79.89851046,-78.43798476000001,-78.55422185,-78.50991526,-78.40330894,-79.26100919,-78.44891574,-78.4180705],{"icon":"ios-cog","markerColor":"black","iconColor":"white","spin":false,"squareMarker":false,"iconRotate":0,"font":"monospace","prefix":"ion"},null,"No intervenido",{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["<strong>Agencia: <\/strong>TULCÁN<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>ARCES HOSPITAL LUIS G DAVILA<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>SAN GABRIEL<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>EL ANGEL<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>SAN LORENZO<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>RIOVERDE<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>PREFECTURA - ESMERALDAS<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>IBARRA<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>COTACACHI<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>PIMAMPIRO <br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>TENA<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>JOYA DE LOS SACHAS<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>LORETO<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>AGUARICO<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>PUYO<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>SANTA CLARA<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>GONZALO PIZARRO<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>CALUMA<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>CHILLANES<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>GUARANDA<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>ALAUSÃ<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>CHUNCHI<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>COLTA<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>CUMANDÃ<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>GUAMOTE<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>GUANO<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>HOSPITAL GENERAL DOCENTE<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>PENIPE<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>LA MANÃ<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>PUJILÃ<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>SALCEDO<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>SIGCHOS<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>AMBATO<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>IZAMBA<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>PELILEO<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>SANTO DOMINGO<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>La Concordia <br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>OLMEDO<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>EL CARMEN<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>CHONE<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>JAMA<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>BOLIVAR<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>PICHINCHA<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>MONTECRISTI<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>ROCAFUERTE <br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>PORTOVIEJO<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>PEDERNALES<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>BABAHOYO<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>SAN CAMILO<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>VENTANAS<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>VALENCIA<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>MOCACHE<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>MONTALVO<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>ARCES HOSP. SAGRADO CORAZÃN DE JESUS<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>CENTRO QUEVEDO<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>QUINSALOMA <br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>MANGLARALTO<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>COLONCHE<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>ARCES SANTA ELENA<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>MILAGRO<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>ARCE-MILAGRO<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>SANTA CRUZ<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>SAN CRISTOBAL<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>CAMILO PONCE ENRÃQUEZ<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>BELLAVISTA<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>OÃA<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>PUCARÃ<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>SANTA ISABEL<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>SIGSIG<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>LA TRONCAL<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>GUALAQUIZA<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>SANTIAGO DE MÃNDEZ<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>PALORA<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>MACAS<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>TIWINTZA<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>ZAMORA<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>AGENCIA EL PANGUI <br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>YANTZAZA<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>AGENCIA CALVAS<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>AGENCIA ESPINDOLA/PARROQUIA AMALUZA<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>MACARÃ/MACARÃ<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>Agencia del Registro Civil Puyango<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>CATAMAYO<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>ZAPOTILLO<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>CELICA<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>MARCABELÃ<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>PORTOVELO<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>SANTA ROSA<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>ALFREDO BAQUERIZO MORENO (JUJAN)<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>BALZAR<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>CENTRO GYE/ROCAFUERTE<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>DAULE<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>EDIFICIO DEL GOBIERNO ZONAL GUAYAQUIL<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>GENERAL VILLAMIL PLAYAS<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>LA PUNTILLA<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>NARANJAL<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>NARANJITO<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>PEDRO CARBO<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>SUR GYE/XIMENA<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>YAGUACHI<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>HOSPITAL GENERAL MONTE SINAÃ<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>HOSPITAL MATILDE HIDALGO DE PROCEL<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>HOSPITAL TEODORO MALDONADO CARBO IESS<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>CALDERÃN<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>HOSPITAL GINECO OBSTÃTRICO NUEVA AURORA<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>LA ROLDOS<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>PUELLARO<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>PUERTO QUITO<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>RUMIÃAHUI<br><strong>Estado: <\/strong>No intervenido","<strong>Agencia: <\/strong>TUMBACO<br><strong>Estado: <\/strong>No intervenido"],null,null,null,["Provincia: CARCHI - No intervenido","Provincia: CARCHI - No intervenido","Provincia: CARCHI - No intervenido","Provincia: CARCHI - No intervenido","Provincia: ESMERALDAS - No intervenido","Provincia: ESMERALDAS - No intervenido","Provincia: ESMERALDAS - No intervenido","Provincia: IMBABURA - No intervenido","Provincia: IMBABURA - No intervenido","Provincia: IMBABURA - No intervenido","Provincia: NAPO - No intervenido","Provincia: ORELLANA - No intervenido","Provincia: ORELLANA - No intervenido","Provincia: ORELLANA - No intervenido","Provincia: PASTAZA - No intervenido","Provincia: PASTAZA - No intervenido","Provincia: SUCUMBIOS - No intervenido","Provincia: BOLÃVAR - No intervenido","Provincia: BOLÃVAR - No intervenido","Provincia: BOLÃVAR - No intervenido","Provincia: CHIMBORAZO - No intervenido","Provincia: CHIMBORAZO - No intervenido","Provincia: CHIMBORAZO - No intervenido","Provincia: CHIMBORAZO - No intervenido","Provincia: CHIMBORAZO - No intervenido","Provincia: CHIMBORAZO - No intervenido","Provincia: CHIMBORAZO - No intervenido","Provincia: CHIMBORAZO - No intervenido","Provincia: COTOPAXI - No intervenido","Provincia: COTOPAXI - No intervenido","Provincia: COTOPAXI - No intervenido","Provincia: COTOPAXI - No intervenido","Provincia: TUNGURAHUA - No intervenido","Provincia: TUNGURAHUA - No intervenido","Provincia: TUNGURAHUA - No intervenido","Provincia: SANTO DOMINGO - No intervenido","Provincia: SANTO DOMINGO - No intervenido","Provincia: MANABI - No intervenido","Provincia: MANABI - No intervenido","Provincia: MANABI - No intervenido","Provincia: MANABI - No intervenido","Provincia: MANABI - No intervenido","Provincia: MANABI - No intervenido","Provincia: MANABI - No intervenido","Provincia: MANABI - No intervenido","Provincia: MANABI - No intervenido","Provincia: MANABI - No intervenido","Provincia: LOS RIOS - No intervenido","Provincia: LOS RIOS  - No intervenido","Provincia: LOS RIOS - No intervenido","Provincia: LOS RIOS - No intervenido","Provincia: LOS RIOS - No intervenido","Provincia: LOS RIOS - No intervenido","Provincia: LOS RIOS - No intervenido","Provincia: LOS RIOS - No intervenido","Provincia: LOS RIOS - No intervenido","Provincia: SANTA ELENA - No intervenido","Provincia: SANTA ELENA  - No intervenido","Provincia: SANTA ELENA  - No intervenido","Provincia: GUAYAS - No intervenido","Provincia: GUAYAS - No intervenido","Provincia: GALAPAGOS - No intervenido","Provincia: GALAPAGOS - No intervenido","Provincia: AZUAY - No intervenido","Provincia: AZUAY - No intervenido","Provincia: AZUAY - No intervenido","Provincia: AZUAY - No intervenido","Provincia: AZUAY - No intervenido","Provincia: AZUAY - No intervenido","Provincia: CAÃAR - No intervenido","Provincia: MORONA SANTIAGO - No intervenido","Provincia: MORONA SANTIAGO - No intervenido","Provincia: MORONA SANTIAGO - No intervenido","Provincia: MORONA SANTIAGO - No intervenido","Provincia: MORONA SANTIAGO - No intervenido","Provincia: ZAMORA CHINCHIPE - No intervenido","Provincia: ZAMORA CHINCHIPE  - No intervenido","Provincia: ZAMORA CHINCHIPE - No intervenido","Provincia: LOJA - No intervenido","Provincia: LOJA - No intervenido","Provincia: LOJA - No intervenido","Provincia: LOJA - No intervenido","Provincia: LOJA - No intervenido","Provincia: LOJA - No intervenido","Provincia: LOJA - No intervenido","Provincia: EL ORO - No intervenido","Provincia: EL ORO - No intervenido","Provincia: EL ORO - No intervenido","Provincia: GUAYAS - No intervenido","Provincia: GUAYAS - No intervenido","Provincia: GUAYAS - No intervenido","Provincia: GUAYAS - No intervenido","Provincia: GUAYAS - No intervenido","Provincia: GUAYAS - No intervenido","Provincia: GUAYAS - No intervenido","Provincia: GUAYAS - No intervenido","Provincia: GUAYAS - No intervenido","Provincia: GUAYAS - No intervenido","Provincia: GUAYAS - No intervenido","Provincia: GUAYAS - No intervenido","Provincia: GUAYAS - No intervenido","Provincia: GUAYAS - No intervenido","Provincia: GUAYAS - No intervenido","Provincia: QUITO - No intervenido","Provincia: QUITO - No intervenido","Provincia: QUITO - No intervenido","Provincia: QUITO - No intervenido","Provincia: PUERTO QUITO - No intervenido","Provincia: RUMIÃAHUI - No intervenido","Provincia: QUITO - No intervenido"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addAwesomeMarkers","args":[[0.81154,0.83081,0.60055,0.62155,0.328694,0.6104000000000001,0.8698900000000001,1.283333,0.968516,0.3,0.353384,0.391075,-0.291644,-0.921013,-1.265683,-0.187994,0.048043,0.116827,-1.4299261,-1.2910467,-1.7037811,-1.564785,-1.6688293,-0.9564856,-0.8386039,-0.7081441000000001,-1.3183452,-1.1779727,-1.3490161,-0.244868886,-1.552237112,-0.200616472,-1.048766732,-1.559601112,-1.05001328,-1.206679,-0.982054623,-0.92523567,-0.406377755,-1.552043,-1.44297,-1.571694444,-1.788892,-1.55641,-0.897,-1.8508183,-2.229196,-2.231244871,-2.402320083,-2.125808198,-2.889357082,-2.903266963,-2.894414269,-3.337076,-3.273701906,-3.0507274,-2.738508996,-2.557304305,-3.404470218,-1.941871,-2.96899,-2.450065613,-2.384105963,-1.699329492,-3.04889,-3.116255,-4.86,-4.05,-4.58,-3.62,-4.05,-4.37,-4,-4.39,-4.1,-3.55,-3.47,-3.79,-3.71,-3.44,-3.69,-1.891817168,-2.167448032,-2.161583551,-1.051262993,-2.634149282,-2.139556035,-2.168695754,-2.100334017,-1.823924366,-1.834639255,-2.183218271,-2.276548929,-2.175637618,-2.096837608,0.051158792,-0.205010049,-0.257588368,-0.21458121,-0.1272514,-0.08938141500000001,-0.05525626,-0.324278457,-0.216527906,0.025375447],[-77.71261,-77.71005,-77.83419000000001,-77.93873000000001,-79.46091699999999,-80.01860000000001,-79.84059999999999,-78.835667,-79.653972,-78.266667,-78.126193,-77.939387,-76.854078,-75.399106,-77.888977,-76.637781,-77.328526,-75.86480400000001,-79.2847749,-78.9623919,-78.7773234,-78.531139,-78.65604620000001,-78.69307809999999,-78.6685499,-78.8923259,-78.5081576,-78.54582120000001,-78.672186,-79.17156847,-80.42558862999999,-80.26319237,-79.82302851,-80.81066203,-80.66057194,-80.37368600000001,-80.72128323,-80.45004766,-79.90629644000001,-79.53473700000001,-79.46274,-79.47127777999999,-79.287741,-79.7533,-79.48926,-80.7460409,-80.92468,-80.85291675000001,-80.68074498,-79.58810085,-79.00231665,-78.99968032,-78.77212797999999,-79.06695499999999,-79.31440735,-78.7954175,-78.84721999999999,-78.94145874,-78.5770428,-77.990498,-78.43532999999999,-78.17086184,-77.50677940999999,-77.96953632,-78.00714000000001,-78.529078,-79.13,-78.68000000000001,-79.43000000000001,-79.23999999999999,-79.65000000000001,-79.94,-79.34999999999999,-80.23999999999999,-79.95999999999999,-80.06,-79.95999999999999,-79.91,-79.62,-79.97,-79.61,-79.55517164,-79.83766796,-79.89794254,-79.63162469,-80.38981721,-79.86340405999999,-79.46336135999999,-79.94035526,-80.22706829000001,-79.83178046,-79.82935103,-79.89527845000001,-79.94128372,-79.94631149,-78.14387037,-78.5046663,-78.52528748,-78.49974249,-78.500225,-78.47657633999999,-78.45426045000001,-78.44891574,-78.50416611,-78.89476044],{"icon":"ios-cog","markerColor":"orange","iconColor":"white","spin":false,"squareMarker":false,"iconRotate":0,"font":"monospace","prefix":"ion"},null,"Visitado",{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["<strong>Agencia: <\/strong>TULCÁN<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>ARCES HOSPITAL LUIS G DAVILA<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>SAN GABRIEL<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>EL ANGEL<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>QUININDE<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>MUISNE<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>ATACAMES<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>SAN LORENZO<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>EDIFICIO SENEGAL<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>COTACACHI<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>ARCES HOSPITAL SAN VICENTE DE PAUL<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>PIMAMPIRO <br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>JOYA DE LOS SACHAS<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>AGUARICO<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>SANTA CLARA<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>SHUSHUFINDI<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>GONZALO PIZARRO<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>PUTUMAYO<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>ECHEANDÃA<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>SIMIATUG<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>COLTA<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>PENIPE<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>RIOBAMBA<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>PUJILÃ<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>SAQUISILÃ<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>SIGCHOS<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>PATATE<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>PILLARO<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>TISALEO<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>SANTO DOMINGO<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>PAJAN<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>JAMA<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>PICHINCHA<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>PUERTO LOPEZ<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>MONTECRISTI<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>SANTA ANA <br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>MANTA<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>ROCAFUERTE <br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>FLAVIO ALFARO <br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>PUEBLOVIEJO<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>VENTANAS<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>URDANETA<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>MONTALVO<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>AGENCIA VINCES <br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>BUENA FE <br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>MANGLARALTO<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>SALINAS/CAC<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>ARCES SANTA ELENA<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>CHANDUY <br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>ARCE-MILAGRO<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>BELLAVISTA<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>SAN BLÃS (CUENCA)<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>GUALACEO<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>NABÃN<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>SANTA ISABEL<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>SIGSIG<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>AZOGUES<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>CAÃAR<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>GUALAQUIZA<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>HUAMBOYA<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>GENERAL LEONIDAS PLAZA GUTIÃRREZ<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>SUCÃA<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>TAISHA<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>PALORA<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>TIWINTZA<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>SAN JUAN BOSCO<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>ZUMBA/ZUMBA<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>NANGARITZA<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>AGENCIA ESPINDOLA/PARROQUIA AMALUZA<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>AGENCIA SARAGURO<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>Paltas<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>MACARÃ/MACARÃ<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>CATAMAYO<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>ZAPOTILLO<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>CELICA<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>ARENILLAS<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>HOSPITAL ÃNGELA LOAYZA DE OLLAGUE<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>MARCABELÃ<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>PORTOVELO<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>SANTA ROSA<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>ZARUMA<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>ALFREDO BAQUERIZO MORENO (JUJAN)<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>DURÃN<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>EDIFICIO DEL GOBIERNO ZONAL GUAYAQUIL<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>EMPALME<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>GENERAL VILLAMIL PLAYAS<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>LA PUNTILLA<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>NARANJITO<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>NORTE GYE/TARQUI<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>PEDRO CARBO<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>SALITRE<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>ARCES HOSPITAL DR. ENRIQUE ORTEGA MOREIRA<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>HOSPITAL DEL GUASMO SUR<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>HOSPITAL IESS CEIBOS<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>HOSPITAL UNIVERSITARIO<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>CAYAMBE<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>HOSPITAL CARLOS ANDRADE MARÃN (QUITO)<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>HOSPITAL GENERAL DEL SUR DE QUITO - IESS<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>HOSPITAL GINECO OBSTÃTRICO ISIDRO AYORA (QUITO)<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>HOSPITAL PABLO ARTURO SUAREZ<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>HOSPITAL SAN FRANCISCO DE QUITO (QUITO)<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>POMASQUI<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>RUMIÃAHUI<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>SAN BLAS (QUITO)<br><strong>Estado: <\/strong>Visitado","<strong>Agencia: <\/strong>SAN MIGUEL DE LOS BANCOS<br><strong>Estado: <\/strong>Visitado"],null,null,null,["Provincia: CARCHI - Visitado","Provincia: CARCHI - Visitado","Provincia: CARCHI - Visitado","Provincia: CARCHI - Visitado","Provincia: ESMERALDAS - Visitado","Provincia: ESMERALDAS - Visitado","Provincia: ESMERALDAS - Visitado","Provincia: ESMERALDAS - Visitado","Provincia: ESMERALDAS - Visitado","Provincia: IMBABURA - Visitado","Provincia: IMBABURA - Visitado","Provincia: IMBABURA - Visitado","Provincia: ORELLANA - Visitado","Provincia: ORELLANA - Visitado","Provincia: PASTAZA - Visitado","Provincia: SUCUMBIOS - Visitado","Provincia: SUCUMBIOS - Visitado","Provincia: SUCUMBIOS - Visitado","Provincia: BOLÃVAR - Visitado","Provincia: BOLÃVAR - Visitado","Provincia: CHIMBORAZO - Visitado","Provincia: CHIMBORAZO - Visitado","Provincia: CHIMBORAZO - Visitado","Provincia: COTOPAXI - Visitado","Provincia: COTOPAXI - Visitado","Provincia: COTOPAXI - Visitado","Provincia: TUNGURAHUA - Visitado","Provincia: TUNGURAHUA - Visitado","Provincia: TUNGURAHUA - Visitado","Provincia: SANTO DOMINGO - Visitado","Provincia: MANABI - Visitado","Provincia: MANABI - Visitado","Provincia: MANABI - Visitado","Provincia: MANABI - Visitado","Provincia: MANABI - Visitado","Provincia: MANABI - Visitado","Provincia: MANABI - Visitado","Provincia: MANABI - Visitado","Provincia: MANABI - Visitado","Provincia: LOS RIOS  - Visitado","Provincia: LOS RIOS - Visitado","Provincia: URDANETA - Visitado","Provincia: LOS RIOS - Visitado","Provincia: LOS RIOS  - Visitado","Provincia: LOS RIOS - Visitado","Provincia: SANTA ELENA - Visitado","Provincia: SANTA ELENA - Visitado","Provincia: SANTA ELENA  - Visitado","Provincia: SANTA ELENA  - Visitado","Provincia: GUAYAS - Visitado","Provincia: AZUAY - Visitado","Provincia: AZUAY - Visitado","Provincia: AZUAY - Visitado","Provincia: AZUAY - Visitado","Provincia: AZUAY - Visitado","Provincia: AZUAY - Visitado","Provincia: CAÃAR - Visitado","Provincia: CAÃAR - Visitado","Provincia: MORONA SANTIAGO - Visitado","Provincia: MORONA SANTIAGO - Visitado","Provincia: MORONA SANTIAGO - Visitado","Provincia: MORONA SANTIAGO - Visitado","Provincia: MORONA SANTIAGO - Visitado","Provincia: MORONA SANTIAGO - Visitado","Provincia: MORONA SANTIAGO - Visitado","Provincia: MORONA SANTIAGO - Visitado","Provincia: ZAMORA CHINCHIPE - Visitado","Provincia: ZAMORA CHINCHIPE - Visitado","Provincia: LOJA - Visitado","Provincia: LOJA - Visitado","Provincia: Loja - Visitado","Provincia: LOJA - Visitado","Provincia: LOJA - Visitado","Provincia: LOJA - Visitado","Provincia: LOJA - Visitado","Provincia: EL ORO - Visitado","Provincia: EL ORO - Visitado","Provincia: EL ORO - Visitado","Provincia: EL ORO - Visitado","Provincia: EL ORO - Visitado","Provincia: EL ORO - Visitado","Provincia: GUAYAS - Visitado","Provincia: GUAYAS - Visitado","Provincia: GUAYAS - Visitado","Provincia: GUAYAS - Visitado","Provincia: GUAYAS - Visitado","Provincia: GUAYAS - Visitado","Provincia: GUAYAS - Visitado","Provincia: GUAYAS - Visitado","Provincia: GUAYAS - Visitado","Provincia: GUAYAS - Visitado","Provincia: GUAYAS - Visitado","Provincia: GUAYAS - Visitado","Provincia: GUAYAS - Visitado","Provincia: GUAYAS - Visitado","Provincia: CAYAMBE - Visitado","Provincia: QUITO - Visitado","Provincia: QUITO - Visitado","Provincia: QUITO - Visitado","Provincia: QUITO - Visitado","Provincia: QUITO - Visitado","Provincia: QUITO - Visitado","Provincia: RUMIÃAHUI - Visitado","Provincia: QUITO - Visitado","Provincia: SAN MIGUEL DE  LOS BANCOS - Visitado"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addAwesomeMarkers","args":[[0.8698900000000001,1.088378,0.3475,0.317,0.2338,0.233322,-0.455702,-0.291644,-0.691615,-1.480853,0.078122,0.048043,0.116827,-1.685461,-1.5930496,-1.9546901,-1.7088971,-1.2910467,-1.9347172,-1.6070238,-1.6819748,-1.6688293,-0.9368378000000001,-0.946947,-0.9530168999999999,-0.8386039,-0.7081441000000001,-0.9576692999999999,-1.3183452,-1.3302603,-1.1779727,-1.3770706,0.017359,-1.393913874,-0.7050477939999999,-1.559601112,-1.05001328,-1.206679,-0.982054623,-0.926018395,-1.024919057,-1.029888889,-1.44297,-0.950565335,-1.18385,-1.784261,-1.03743,-1.8508183,-2.229196,-2.2255499,-2.0217741,-2.402320083,-2.139928255,-0.953995,-0.901888,-3.062573,-2.894414269,-3.47002,-2.9034092,-3.273701906,-3.0507274,-2.557304305,-2.445612703,-2.438579297,-2.96899,-2.450065613,-1.699329492,-2.291536553,-3.116255,-3.64,-4.86,-3.82,-4.32,-4.58,-4.05,-4.02,-4,-3.24,-3.49,-3.69,-3.44,-3.69,-2.191008044,-1.547325175,-2.167448032,-2.634149282,-1.823924366,-1.834639255,-1.955327176,-2.243149565,-2.096022021,-2.183218271,-2.276548929,-2.127079483,-2.275845429,-2.232088901,-0.2706466,-0.095246688,0.051158792,-0.112167087,-0.257588368,-0.21458121,-0.312602299,-0.1272514,-0.08938141500000001,-0.174828197,-0.05525626,0.065852166,-0.293126328,-0.324278457,-0.216527906,0.025375447],[-79.84059999999999,-78.988253,-78.1215,-78.217,-78.26260000000001,-78.25944,-76.993172,-76.854078,-77.309354,-78.006381,-77.21047799999999,-77.328526,-75.86480400000001,-79.024568,-79.00436379999999,-79.2366079,-79.0448344,-78.9623919,-78.7163311,-78.6461039,-78.6623501,-78.65604620000001,-78.61957289999999,-79.2428556,-78.60598880000001,-78.6685499,-78.8923259,-78.8980396,-78.5081576,-78.5472781,-78.54582120000001,-78.6084951,-79.399353,-80.21124677,-80.10351626000001,-80.81066203,-80.66057194,-80.37368600000001,-80.72128323,-80.20647397,-80.47748704999999,-79.45511111,-79.46274,-79.3652,-79.50552999999999,-79.679118,-79.47217000000001,-80.7460409,-80.92468,-80.85910579999999,-80.6695551,-80.68074498,-79.596817,-90.96476,-89.607901,-79.74272999999999,-78.77212797999999,-79.15461999999999,-78.9996276,-79.31440735,-78.7954175,-78.94145874,-79.32012965,-79.05245893999999,-78.43532999999999,-78.17086184,-77.96953632,-78.12098211999999,-78.529078,-78.93000000000001,-79.13,-78.76000000000001,-79.56,-79.43000000000001,-79.65000000000001,-80.02,-79.34999999999999,-79.84,-80.22,-79.68000000000001,-79.97,-79.61,-79.88070629000001,-80.01023535,-79.83766796,-80.38981721,-80.22706829000001,-79.83178046,-79.72329242000001,-79.89640759,-79.69313509,-79.82935103,-79.89527845000001,-80.00192459,-79.87734488,-79.89851046,-78.5572578,-78.43798476000001,-78.14387037,-78.29598202,-78.52528748,-78.49974249,-78.55422185,-78.500225,-78.47657633999999,-78.485839,-78.45426045000001,-78.40330894,-78.54606385,-78.44891574,-78.50416611,-78.89476044],{"icon":"ios-cog","markerColor":"blue","iconColor":"white","spin":false,"squareMarker":false,"iconRotate":0,"font":"monospace","prefix":"ion"},null,"En Diseño",{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["<strong>Agencia: <\/strong>ATACAMES<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>ELOY ALFARO<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>IBARRA<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>AGENCIA<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>OTAVALO<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>ARCES HOSPITAL SAN LUIS DE OTAVALO<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>ORELLANA (COCA)<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>JOYA DE LOS SACHAS<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>LORETO<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>PUYO<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>CASCALES<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>GONZALO PIZARRO<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>PUTUMAYO<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>CHIMBO<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>GUARANDA<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>SAN JOSÃ DEL TAMBO<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>SAN MIGUEL<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>SIMIATUG<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>GUAMOTE<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>GUANO<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>HOSPITAL GENERAL DOCENTE<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>RIOBAMBA<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>HOSPITAL GENERAL DE LATACUNGA<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>LA MANÃ<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>LATACUNGA<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>SAQUISILÃ<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>SIGCHOS<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>ZUMBAHUA<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>PATATE<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>PELILEO<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>PILLARO<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>QUERO<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>La Concordia <br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>OLMEDO<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>CHONE<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>PUERTO LOPEZ<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>MONTECRISTI<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>SANTA ANA <br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>MANTA<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>JUNIN<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>PORTOVIEJO<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>SAN CAMILO<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>VENTANAS<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>VALENCIA<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>MOCACHE<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>BABA<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>ARCES HOSP. SAGRADO CORAZÃN DE JESUS<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>MANGLARALTO<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>SALINAS/CAC<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>SANTA ELENA<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>COLONCHE<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>CHANDUY <br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>MILAGRO<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>ISABELA<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>SAN CRISTOBAL<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>CAMILO PONCE ENRÃQUEZ<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>GUALACEO<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>OÃA<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>PAUTE<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>SANTA ISABEL<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>SIGSIG<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>CAÃAR<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>LA TRONCAL<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>SUSCAL<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>GENERAL LEONIDAS PLAZA GUTIÃRREZ<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>SUCÃA<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>PALORA<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>MACAS<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>SAN JUAN BOSCO<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>YACUAMBI<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>ZUMBA/ZUMBA<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>YANTZAZA<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>AGENCIA CALVAS<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>AGENCIA ESPINDOLA/PARROQUIA AMALUZA<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>Paltas<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>Agencia del Registro Civil Puyango<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>CATAMAYO<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>EL GUABO<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>HUAQUILLAS<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>PIÃAS<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>SANTA ROSA<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>ZARUMA<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>CENTRO GYE/ROCAFUERTE<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>COLIMES<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>DURÃN<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>GENERAL VILLAMIL PLAYAS<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>PEDRO CARBO<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>SALITRE<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>SAMBORONDÃN<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>SUR GYE/XIMENA<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>YAGUACHI<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>ARCES HOSPITAL DR. ENRIQUE ORTEGA MOREIRA<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>HOSPITAL DEL GUASMO SUR<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>HOSPITAL GENERAL MONTE SINAÃ<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>HOSPITAL MATILDE HIDALGO DE PROCEL<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>HOSPITAL TEODORO MALDONADO CARBO IESS<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>ARCHIVO LOCAL<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>CALDERÃN<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>CAYAMBE<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>EL QUINCHE<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>HOSPITAL GENERAL DEL SUR DE QUITO - IESS<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>HOSPITAL GINECO OBSTÃTRICO ISIDRO AYORA (QUITO)<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>HOSPITAL GINECO OBSTÃTRICO NUEVA AURORA<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>HOSPITAL PABLO ARTURO SUAREZ<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>HOSPITAL SAN FRANCISCO DE QUITO (QUITO)<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>MATRIZ - IÃAQUITO<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>POMASQUI<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>PUELLARO<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>QUITUMBE<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>RUMIÃAHUI<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>SAN BLAS (QUITO)<br><strong>Estado: <\/strong>En Diseño","<strong>Agencia: <\/strong>SAN MIGUEL DE LOS BANCOS<br><strong>Estado: <\/strong>En Diseño"],null,null,null,["Provincia: ESMERALDAS - En Diseño","Provincia: ESMERALDAS - En Diseño","Provincia: IMBABURA - En Diseño","Provincia: IMBABURA - En Diseño","Provincia: IMBABURA - En Diseño","Provincia: IMBABURA - En Diseño","Provincia: ORELLANA - En Diseño","Provincia: ORELLANA - En Diseño","Provincia: ORELLANA - En Diseño","Provincia: PASTAZA - En Diseño","Provincia: SUCUMBIOS - En Diseño","Provincia: SUCUMBIOS - En Diseño","Provincia: SUCUMBIOS - En Diseño","Provincia: BOLÃVAR - En Diseño","Provincia: BOLÃVAR - En Diseño","Provincia: BOLÃVAR - En Diseño","Provincia: BOLÃVAR - En Diseño","Provincia: BOLÃVAR - En Diseño","Provincia: CHIMBORAZO - En Diseño","Provincia: CHIMBORAZO - En Diseño","Provincia: CHIMBORAZO - En Diseño","Provincia: CHIMBORAZO - En Diseño","Provincia: COTOPAXI - En Diseño","Provincia: COTOPAXI - En Diseño","Provincia: COTOPAXI - En Diseño","Provincia: COTOPAXI - En Diseño","Provincia: COTOPAXI - En Diseño","Provincia: COTOPAXI - En Diseño","Provincia: TUNGURAHUA - En Diseño","Provincia: TUNGURAHUA - En Diseño","Provincia: TUNGURAHUA - En Diseño","Provincia: TUNGURAHUA - En Diseño","Provincia: SANTO DOMINGO - En Diseño","Provincia: MANABI - En Diseño","Provincia: MANABI - En Diseño","Provincia: MANABI - En Diseño","Provincia: MANABI - En Diseño","Provincia: MANABI - En Diseño","Provincia: MANABI - En Diseño","Provincia: MANABI - En Diseño","Provincia: MANABI - En Diseño","Provincia: LOS RIOS  - En Diseño","Provincia: LOS RIOS - En Diseño","Provincia: LOS RIOS - En Diseño","Provincia: LOS RIOS - En Diseño","Provincia: LOS RIOS - En Diseño","Provincia: LOS RIOS - En Diseño","Provincia: SANTA ELENA - En Diseño","Provincia: SANTA ELENA - En Diseño","Provincia: SANTA ELENA - En Diseño","Provincia: SANTA ELENA  - En Diseño","Provincia: SANTA ELENA  - En Diseño","Provincia: GUAYAS - En Diseño","Provincia: GALAPAGOS - En Diseño","Provincia: GALAPAGOS - En Diseño","Provincia: AZUAY - En Diseño","Provincia: AZUAY - En Diseño","Provincia: AZUAY - En Diseño","Provincia: AZUAY - En Diseño","Provincia: AZUAY - En Diseño","Provincia: AZUAY - En Diseño","Provincia: CAÃAR - En Diseño","Provincia: CAÃAR - En Diseño","Provincia: CAÃAR - En Diseño","Provincia: MORONA SANTIAGO - En Diseño","Provincia: MORONA SANTIAGO - En Diseño","Provincia: MORONA SANTIAGO - En Diseño","Provincia: MORONA SANTIAGO - En Diseño","Provincia: MORONA SANTIAGO - En Diseño","Provincia: ZAMORA CHINCHIPE - En Diseño","Provincia: ZAMORA CHINCHIPE - En Diseño","Provincia: ZAMORA CHINCHIPE - En Diseño","Provincia: LOJA - En Diseño","Provincia: LOJA - En Diseño","Provincia: Loja - En Diseño","Provincia: LOJA - En Diseño","Provincia: LOJA - En Diseño","Provincia: EL ORO - En Diseño","Provincia: EL ORO - En Diseño","Provincia: EL ORO - En Diseño","Provincia: EL ORO - En Diseño","Provincia: EL ORO - En Diseño","Provincia: GUAYAS - En Diseño","Provincia: GUAYAS - En Diseño","Provincia: GUAYAS - En Diseño","Provincia: GUAYAS - En Diseño","Provincia: GUAYAS - En Diseño","Provincia: GUAYAS - En Diseño","Provincia: GUAYAS - En Diseño","Provincia: GUAYAS - En Diseño","Provincia: GUAYAS - En Diseño","Provincia: GUAYAS - En Diseño","Provincia: GUAYAS - En Diseño","Provincia: GUAYAS - En Diseño","Provincia: GUAYAS - En Diseño","Provincia: GUAYAS - En Diseño","Provincia: QUITO - En Diseño","Provincia: QUITO - En Diseño","Provincia: CAYAMBE - En Diseño","Provincia: QUITO - En Diseño","Provincia: QUITO - En Diseño","Provincia: QUITO - En Diseño","Provincia: QUITO - En Diseño","Provincia: QUITO - En Diseño","Provincia: QUITO - En Diseño","Provincia: QUITO - En Diseño","Provincia: QUITO - En Diseño","Provincia: QUITO - En Diseño","Provincia: QUITO - En Diseño","Provincia: RUMIÃAHUI - En Diseño","Provincia: QUITO - En Diseño","Provincia: SAN MIGUEL DE  LOS BANCOS - En Diseño"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addAwesomeMarkers","args":[[0.550809,0.6104000000000001,1.283333,0.968516,0.3475,0.3,0.317,0.233322,0.391075,-1.006998,-0.340438,-0.291644,-0.691615,-1.265683,0.07838299999999999,0.078122,0.048043,0.116827,-1.630298,-1.9414189,-1.5930496,-1.9546901,-1.7088971,-2.2018411,-2.289176,-1.7037811,-1.6070238,-1.9982086,-1.6688293,-0.9368378000000001,-0.946947,-1.137447,-1.0459122,-0.7081441000000001,-0.9576692999999999,-1.2663853,-1.2277475,-1.1779727,-1.3770706,-1.3490161,-1.393913874,-0.60285034,-1.353289643,-0.200616472,-0.845067569,-1.559601112,-1.05001328,-1.206679,-0.982054623,-0.92523567,-1.029888889,-0.950565335,-1.18385,-1.43865,-1.784261,-1.03743,-1.55641,-1.8508183,-2.229196,-2.0217741,-2.402320083,-0.74236,-0.953995,-2.904732265,-2.903266963,-2.894414269,-3.0507274,-2.738508996,-2.714722,-2.445612703,-2.438579297,-2.717703581,-2.384105963,-1.699329492,-3.04889,-3.116255,-4.07,-3.64,-4.86,-4.58,-4,-4.02,-4.39,-3.55,-3.24,-3.49,-3.26,-3.79,-3.33,-1.891817168,-1.547325175,-2.161583551,-1.051262993,-2.139556035,-2.6596441,-1.834639255,-2.096022021,-2.175637618,-2.232088901,-0.2706466,0.051158792,-0.112167087,-0.257588368,-0.21458121,-0.1272514,-0.084670128,-0.514458564,-0.05525626,0.065852166,0.171208486,0.025375447],[-78.041253,-80.01860000000001,-78.835667,-79.653972,-78.1215,-78.266667,-78.217,-78.25944,-77.939387,-77.813085,-77.814734,-76.854078,-77.309354,-77.888977,-76.892731,-77.21047799999999,-77.328526,-75.86480400000001,-79.2548735,-79.0693011,-79.00436379999999,-79.2366079,-79.0448344,-78.8501004,-78.920224,-78.7773234,-78.6461039,-78.96793700000001,-78.65604620000001,-78.61957289999999,-79.2428556,-79.080654,-78.59748949999999,-78.8923259,-78.8980396,-78.672186,-78.5891194,-78.54582120000001,-78.6084951,-78.672186,-80.21124677,-80.42558751,-80.58604912,-80.26319237,-80.15911761,-80.81066203,-80.66057194,-80.37368600000001,-80.72128323,-80.45004766,-79.45511111,-79.3652,-79.50552999999999,-79.75843999999999,-79.679118,-79.47217000000001,-79.7533,-80.7460409,-80.92468,-80.6695551,-80.68074498,-90.32281,-90.96476,-79.02694612000001,-78.99968032,-78.77212797999999,-78.7954175,-78.84721999999999,-78.887946,-79.32012965,-79.05245893999999,-78.31968689,-77.50677940999999,-77.96953632,-78.00714000000001,-78.529078,-78.95,-78.93000000000001,-79.13,-79.43000000000001,-79.2,-80.02,-80.23999999999999,-80.06,-79.84,-80.22,-79.95999999999999,-79.91,-79.81999999999999,-79.55517164,-80.01023535,-79.89794254,-79.63162469,-79.86340405999999,-79.61597266,-79.83178046,-79.69313509,-79.94128372,-79.89851046,-78.5572578,-78.14387037,-78.29598202,-78.52528748,-78.49974249,-78.500225,-78.50991526,-78.56720167,-78.45426045000001,-78.40330894,-78.41053641000001,-78.89476044],{"icon":"ios-cog","markerColor":"green","iconColor":"white","spin":false,"squareMarker":false,"iconRotate":0,"font":"monospace","prefix":"ion"},null,"Intervenido",{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["<strong>Agencia: <\/strong>MIRA<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>MUISNE<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>SAN LORENZO<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>EDIFICIO SENEGAL<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>IBARRA<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>COTACACHI<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>AGENCIA<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>ARCES HOSPITAL SAN LUIS DE OTAVALO<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>PIMAMPIRO <br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>TENA<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>EL CHACO<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>JOYA DE LOS SACHAS<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>LORETO<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>SANTA CLARA<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>LAGO AGRIO<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>CASCALES<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>GONZALO PIZARRO<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>PUTUMAYO<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>CALUMA<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>CHILLANES<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>GUARANDA<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>SAN JOSÃ DEL TAMBO<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>SAN MIGUEL<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>ALAUSÃ<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>CHUNCHI<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>COLTA<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>GUANO<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>PALLATANGA<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>RIOBAMBA<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>HOSPITAL GENERAL DE LATACUNGA<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>LA MANÃ<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>PANGUA<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>SALCEDO<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>SIGCHOS<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>ZUMBAHUA<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>AMBATO<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>IZAMBA<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>PILLARO<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>QUERO<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>TISALEO<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>OLMEDO<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>BAHIA DE CARAQUEZ<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>JIPIJAPA<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>JAMA<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>BOLIVAR<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>PUERTO LOPEZ<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>MONTECRISTI<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>SANTA ANA <br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>MANTA<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>ROCAFUERTE <br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>SAN CAMILO<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>VALENCIA<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>MOCACHE<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>PALENQUE <br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>BABA<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>ARCES HOSP. SAGRADO CORAZÃN DE JESUS<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>AGENCIA VINCES <br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>MANGLARALTO<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>SALINAS/CAC<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>COLONCHE<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>CHANDUY <br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>SANTA CRUZ<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>ISABELA<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>EL BATÃN<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>SAN BLÃS (CUENCA)<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>GUALACEO<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>SIGSIG<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>AZOGUES<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>BIBLIÃN<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>LA TRONCAL<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>SUSCAL<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>SANTIAGO DE MÃNDEZ<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>TAISHA<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>PALORA<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>TIWINTZA<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>SAN JUAN BOSCO<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>ZAMORA<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>YACUAMBI<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>ZUMBA/ZUMBA<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>AGENCIA ESPINDOLA/PARROQUIA AMALUZA<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>Loja<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>Agencia del Registro Civil Puyango<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>ZAPOTILLO<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>ARENILLAS<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>EL GUABO<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>HUAQUILLAS<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>MACHALA<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>MARCABELÃ<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>PASAJE<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>ALFREDO BAQUERIZO MORENO (JUJAN)<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>COLIMES<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>EDIFICIO DEL GOBIERNO ZONAL GUAYAQUIL<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>EMPALME<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>LA PUNTILLA<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>NARANJAL<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>SALITRE<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>YAGUACHI<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>HOSPITAL IESS CEIBOS<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>HOSPITAL TEODORO MALDONADO CARBO IESS<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>ARCHIVO LOCAL<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>CAYAMBE<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>EL QUINCHE<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>HOSPITAL GENERAL DEL SUR DE QUITO - IESS<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>HOSPITAL GINECO OBSTÃTRICO ISIDRO AYORA (QUITO)<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>HOSPITAL PABLO ARTURO SUAREZ<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>LA ROLDOS<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>MEJÃA<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>POMASQUI<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>PUELLARO<br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>SAN JOSÃ DE MINAS <br><strong>Estado: <\/strong>Intervenido","<strong>Agencia: <\/strong>SAN MIGUEL DE LOS BANCOS<br><strong>Estado: <\/strong>Intervenido"],null,null,null,["Provincia: CARCHI - Intervenido","Provincia: ESMERALDAS - Intervenido","Provincia: ESMERALDAS - Intervenido","Provincia: ESMERALDAS - Intervenido","Provincia: IMBABURA - Intervenido","Provincia: IMBABURA - Intervenido","Provincia: IMBABURA - Intervenido","Provincia: IMBABURA - Intervenido","Provincia: IMBABURA - Intervenido","Provincia: NAPO - Intervenido","Provincia: NAPO - Intervenido","Provincia: ORELLANA - Intervenido","Provincia: ORELLANA - Intervenido","Provincia: PASTAZA - Intervenido","Provincia: SUCUMBIOS - Intervenido","Provincia: SUCUMBIOS - Intervenido","Provincia: SUCUMBIOS - Intervenido","Provincia: SUCUMBIOS - Intervenido","Provincia: BOLÃVAR - Intervenido","Provincia: BOLÃVAR - Intervenido","Provincia: BOLÃVAR - Intervenido","Provincia: BOLÃVAR - Intervenido","Provincia: BOLÃVAR - Intervenido","Provincia: CHIMBORAZO - Intervenido","Provincia: CHIMBORAZO - Intervenido","Provincia: CHIMBORAZO - Intervenido","Provincia: CHIMBORAZO - Intervenido","Provincia: CHIMBORAZO - Intervenido","Provincia: CHIMBORAZO - Intervenido","Provincia: COTOPAXI - Intervenido","Provincia: COTOPAXI - Intervenido","Provincia: COTOPAXI - Intervenido","Provincia: COTOPAXI - Intervenido","Provincia: COTOPAXI - Intervenido","Provincia: COTOPAXI - Intervenido","Provincia: TUNGURAHUA - Intervenido","Provincia: TUNGURAHUA - Intervenido","Provincia: TUNGURAHUA - Intervenido","Provincia: TUNGURAHUA - Intervenido","Provincia: TUNGURAHUA - Intervenido","Provincia: MANABI - Intervenido","Provincia: MANABI - Intervenido","Provincia: MANABI - Intervenido","Provincia: MANABI - Intervenido","Provincia: MANABI - Intervenido","Provincia: MANABI - Intervenido","Provincia: MANABI - Intervenido","Provincia: MANABI - Intervenido","Provincia: MANABI - Intervenido","Provincia: MANABI - Intervenido","Provincia: LOS RIOS  - Intervenido","Provincia: LOS RIOS - Intervenido","Provincia: LOS RIOS - Intervenido","Provincia: LOS RIOS - Intervenido","Provincia: LOS RIOS - Intervenido","Provincia: LOS RIOS - Intervenido","Provincia: LOS RIOS  - Intervenido","Provincia: SANTA ELENA - Intervenido","Provincia: SANTA ELENA - Intervenido","Provincia: SANTA ELENA  - Intervenido","Provincia: SANTA ELENA  - Intervenido","Provincia: GALAPAGOS - Intervenido","Provincia: GALAPAGOS - Intervenido","Provincia: AZUAY - Intervenido","Provincia: AZUAY - Intervenido","Provincia: AZUAY - Intervenido","Provincia: AZUAY - Intervenido","Provincia: CAÃAR - Intervenido","Provincia: CAÃAR - Intervenido","Provincia: CAÃAR - Intervenido","Provincia: CAÃAR - Intervenido","Provincia: MORONA SANTIAGO - Intervenido","Provincia: MORONA SANTIAGO - Intervenido","Provincia: MORONA SANTIAGO - Intervenido","Provincia: MORONA SANTIAGO - Intervenido","Provincia: MORONA SANTIAGO - Intervenido","Provincia: ZAMORA CHINCHIPE - Intervenido","Provincia: ZAMORA CHINCHIPE - Intervenido","Provincia: ZAMORA CHINCHIPE - Intervenido","Provincia: LOJA - Intervenido","Provincia: Loja - Intervenido","Provincia: LOJA - Intervenido","Provincia: LOJA - Intervenido","Provincia: EL ORO - Intervenido","Provincia: EL ORO - Intervenido","Provincia: EL ORO - Intervenido","Provincia: EL ORO - Intervenido","Provincia: EL ORO - Intervenido","Provincia: EL ORO - Intervenido","Provincia: GUAYAS - Intervenido","Provincia: GUAYAS - Intervenido","Provincia: GUAYAS - Intervenido","Provincia: GUAYAS - Intervenido","Provincia: GUAYAS - Intervenido","Provincia: GUAYAS - Intervenido","Provincia: GUAYAS - Intervenido","Provincia: GUAYAS - Intervenido","Provincia: GUAYAS - Intervenido","Provincia: GUAYAS - Intervenido","Provincia: QUITO - Intervenido","Provincia: CAYAMBE - Intervenido","Provincia: QUITO - Intervenido","Provincia: QUITO - Intervenido","Provincia: QUITO - Intervenido","Provincia: QUITO - Intervenido","Provincia: QUITO - Intervenido","Provincia: MEJÃA - Intervenido","Provincia: QUITO - Intervenido","Provincia: QUITO - Intervenido","Provincia: QUITO - Intervenido","Provincia: SAN MIGUEL DE  LOS BANCOS - Intervenido"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addLayersControl","args":[[],["No intervenido","Visitado","En Diseño","Intervenido"],{"collapsed":false,"autoZIndex":true,"position":"topright"}]},{"method":"addLegend","args":[{"colors":["black","orange","blue","green"],"labels":["No intervenido","Visitado","En Diseño","Intervenido"],"na_color":null,"na_label":"NA","opacity":0.8,"position":"bottomright","type":"unknown","title":"Estados","extra":null,"layerId":null,"className":"info legend","group":null}]}],"setView":[[-1.2,-78.5],7,[]],"limits":{"lat":[-4.86,1.283333],"lng":[-90.96476,-75.399106]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+
+
+<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+</div>
+
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (_event) {
+  if (window.bslib.Card) {
+    window.bslib.Card.initializeAllCards();
+  }
+}); 
+</script>
+  
+
+
+
+</body></html>
